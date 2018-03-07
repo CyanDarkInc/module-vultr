@@ -27,7 +27,7 @@ class VultrAccount
 
     /**
      * Retrieve information about the current account.
-     * 
+     *
      * @return stdClass An object containing the api response
      */
     public function info()

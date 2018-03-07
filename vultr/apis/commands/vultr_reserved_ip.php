@@ -95,7 +95,7 @@ class VultrReservedIp
 
     /**
      * List all the active reserved IPs on this account. The "subnet_size" field is the size
-     * of the network assigned to this subscription. 
+     * of the network assigned to this subscription.
      *
      * @return stdClass An object containing the api response
      */

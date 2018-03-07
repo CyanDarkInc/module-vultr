@@ -75,7 +75,7 @@ class VultrServer
     }
 
     /**
-     * Retrieves the backup schedule for a server. 
+     * Retrieves the backup schedule for a server.
      *
      * @param array $params An array contaning the following arguments:
      *     - SUBID: Unique identifier for this subscription.
@@ -137,7 +137,7 @@ class VultrServer
      *     - enable_ipv6: 'yes' or 'no'.  If yes, an IPv6 subnet will be assigned. (optional)
      *     - enable_private_network: yes' or 'no'. If yes, private networking support
      *         will be added to the server. (optional)
-     *     - NETWORKID: List of private networks to attach to this server. 
+     *     - NETWORKID: List of private networks to attach to this server.
      *         Use either this field or enable_private_network, not both. (optional)
      *     - label: This is a text label that will be shown in the control panel. (optional)
      *     - SSHKEYID: List of SSH keys to apply to this server on install. (optional)
@@ -409,7 +409,7 @@ class VultrServer
     }
 
     /**
-     * Reinstall the operating system on a virtual machine. All data will be permanently 
+     * Reinstall the operating system on a virtual machine. All data will be permanently
      * lost, but the IP address will remain the same. There is no going back from this call.
      *
      * @param array $params An array contaning the following arguments:
@@ -493,7 +493,7 @@ class VultrServer
     }
 
     /**
-     * Set a reverse DNS entry for an IPv4 address of a virtual machine. 
+     * Set a reverse DNS entry for an IPv4 address of a virtual machine.
      *
      * @param array $params An array contaning the following arguments:
      *     - SUBID: Unique identifier for this subscription.
@@ -506,7 +506,7 @@ class VultrServer
     }
 
     /**
-     * Set a reverse DNS entry for an IPv6 address of a virtual machine. 
+     * Set a reverse DNS entry for an IPv6 address of a virtual machine.
      *
      * @param array $params An array contaning the following arguments:
      *     - SUBID: Unique identifier for this subscription.

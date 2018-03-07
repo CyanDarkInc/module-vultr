@@ -155,7 +155,7 @@ class Vultr extends Module
             $baremetal_plans = $this->getBaremetalPlans($module_row);
             $server_plans = $this->getServerPlans($module_row);
             $server_templates = $this->getTemplates($module_row);
-        }        
+        }
 
         // Set the Vultr server type as a selectable option
         $server_type = $fields->label(
@@ -275,7 +275,7 @@ class Vultr extends Module
     }
 
     /**
-     * Gets a list of available server types
+     * Gets a list of available server types.
      *
      * @return array A key/value array of available server types and their languages
      */
@@ -288,7 +288,7 @@ class Vultr extends Module
     }
 
     /**
-     * Fetches a listing of all bare metal plans
+     * Fetches a listing of all bare metal plans.
      *
      * @param stdClass $module_row A stdClass object representing a single server
      * @return array An array of plans in key/value pair
@@ -311,7 +311,7 @@ class Vultr extends Module
     }
 
     /**
-     * Fetches a listing of all server plans
+     * Fetches a listing of all server plans.
      *
      * @param stdClass $module_row A stdClass object representing a single server
      * @return array An array of plans in key/value pair
@@ -334,7 +334,7 @@ class Vultr extends Module
     }
 
     /**
-     * Fetches a listing of all server templates
+     * Fetches a listing of all server templates.
      *
      * @param stdClass $module_row A stdClass object representing a single server
      * @param stdClass $package A stdClass object representing the selected package
@@ -400,7 +400,7 @@ class Vultr extends Module
     }
 
     /**
-     * Fetches a listing of all the available locations
+     * Fetches a listing of all the available locations.
      *
      * @param stdClass $module_row A stdClass object representing a single server
      * @param stdClass $package A stdClass object representing the selected package
@@ -1015,7 +1015,7 @@ class Vultr extends Module
     }
 
     /**
-     * Returns the rule set for adding/editing a service
+     * Returns the rule set for adding/editing a service.
      *
      * @param array $vars A list of input vars
      * @param bool $edit True to get the edit rules, false for the add rules
@@ -1047,15 +1047,15 @@ class Vultr extends Module
         if ($edit) {
             // If this is an edit and none of the following fields are given then don't
             // evaluate any of the fileds as they will not be updated.
-            if(!isset($vars['vultr_template'])) {
+            if (!isset($vars['vultr_template'])) {
                 unset($rules['vultr_template']);
             }
 
-            if(!isset($vars['vultr_hostname'])) {
+            if (!isset($vars['vultr_hostname'])) {
                 unset($rules['vultr_hostname']);
             }
 
-            if(!isset($vars['vultr_location'])) {
+            if (!isset($vars['vultr_location'])) {
                 unset($rules['vultr_location']);
             }
 
@@ -1118,7 +1118,7 @@ class Vultr extends Module
         if ($this->Input->errors()) {
             return;
         }
-        
+
         // Only provision the service if 'use_module' is true
         if ($vars['use_module'] == 'true' && empty($vars['vultr_subid'])) {
             $this->log('api.vultr.com|create', serialize($params), 'input', true);
@@ -1270,7 +1270,7 @@ class Vultr extends Module
                 // Fetch the correct template of the server
                 if ($package->meta->set_template == 'admin') {
                     $template = $package->meta->template;
-                } else if ($package->meta->set_template == 'client') {
+                } elseif ($package->meta->set_template == 'client') {
                     $template = isset($delta['vultr_template']) ? $delta['vultr_template'] : null;
                 }
 
@@ -1515,11 +1515,11 @@ class Vultr extends Module
             'SUBID' => $service_fields->vultr_subid
         ];
         $this->log('api.vultr.com|list', serialize($params), 'input', true);
-        
+
         if ($package->meta->server_type == 'server') {
             $server_details = $this->parseResponse($vultr_api->listServers($params));
         } else {
-            $server_details = $this->parseResponse($vultr_api->listBaremetal($params)); 
+            $server_details = $this->parseResponse($vultr_api->listBaremetal($params));
         }
 
         // Load the view into this object, so helpers can be automatically added to the view
@@ -1575,7 +1575,7 @@ class Vultr extends Module
         if ($package->meta->server_type == 'server') {
             $server_details = $this->parseResponse($vultr_api->listServers($params));
         } else {
-            $server_details = $this->parseResponse($vultr_api->listBaremetal($params)); 
+            $server_details = $this->parseResponse($vultr_api->listBaremetal($params));
         }
 
         // Load the view into this object, so helpers can be automatically added to the view
@@ -1682,7 +1682,7 @@ class Vultr extends Module
         if ($package->meta->server_type == 'server') {
             $server_details = $this->parseResponse($vultr_api->listServers($params));
         } else {
-            $server_details = $this->parseResponse($vultr_api->listBaremetal($params)); 
+            $server_details = $this->parseResponse($vultr_api->listBaremetal($params));
         }
 
         $this->view->set('module_row', $row);
@@ -1697,7 +1697,6 @@ class Vultr extends Module
 
         return $this->view->fetch();
     }
-
 
     /**
      * Snapshots tab.
@@ -1759,7 +1758,7 @@ class Vultr extends Module
                         }
                     }
 
-                    $vars = (object)$post;
+                    $vars = (object) $post;
                     break;
                 case 'remove':
                     $params = [
@@ -1780,7 +1779,7 @@ class Vultr extends Module
                         $this->Input->setErrors($this->Services->errors());
                     }
 
-                    $vars = (object)$post;
+                    $vars = (object) $post;
                     break;
                 case 'restore':
                     $params = [
@@ -1789,7 +1788,7 @@ class Vultr extends Module
                     ];
                     $server_api->restoreSnapshot($params);
 
-                    $vars = (object)$post;                    
+                    $vars = (object) $post;
                     break;
                 default:
                     break;
@@ -1851,9 +1850,9 @@ class Vultr extends Module
         if (!empty($post)) {
             switch ($post['action']) {
                 case 'schedule':
-                    #
-                    # TODO: Add the ability of modifying the backup schedule.
-                    #
+                    //
+                    // TODO: Add the ability of modifying the backup schedule.
+                    //
                 case 'restore':
                     $params = [
                         'SUBID' => $service_fields->vultr_subid,
@@ -1861,7 +1860,7 @@ class Vultr extends Module
                     ];
                     $server_api->restoreBackup($params);
 
-                    $vars = (object)$post;                    
+                    $vars = (object) $post;
                     break;
                 default:
                     break;
@@ -1975,7 +1974,7 @@ class Vultr extends Module
         if ($package->meta->server_type == 'server') {
             $server_details = $this->parseResponse($vultr_api->listServers($params));
         } else {
-            $server_details = $this->parseResponse($vultr_api->listBaremetal($params)); 
+            $server_details = $this->parseResponse($vultr_api->listBaremetal($params));
         }
 
         $this->view->set('module_row', $row);
@@ -2051,7 +2050,7 @@ class Vultr extends Module
                         }
                     }
 
-                    $vars = (object)$post;
+                    $vars = (object) $post;
                     break;
                 case 'remove':
                     $params = [
@@ -2072,7 +2071,7 @@ class Vultr extends Module
                         $this->Input->setErrors($this->Services->errors());
                     }
 
-                    $vars = (object)$post;
+                    $vars = (object) $post;
                     break;
                 case 'restore':
                     $params = [
@@ -2081,7 +2080,7 @@ class Vultr extends Module
                     ];
                     $server_api->restoreSnapshot($params);
 
-                    $vars = (object)$post;                    
+                    $vars = (object) $post;
                     break;
                 default:
                     break;
@@ -2143,9 +2142,9 @@ class Vultr extends Module
         if (!empty($post)) {
             switch ($post['action']) {
                 case 'schedule':
-                    #
-                    # TODO: Add the ability of modifying the backup schedule.
-                    #
+                    //
+                    // TODO: Add the ability of modifying the backup schedule.
+                    //
                 case 'restore':
                     $params = [
                         'SUBID' => $service_fields->vultr_subid,
@@ -2153,7 +2152,7 @@ class Vultr extends Module
                     ];
                     $server_api->restoreBackup($params);
 
-                    $vars = (object)$post;                    
+                    $vars = (object) $post;
                     break;
                 default:
                     break;
@@ -2182,7 +2181,7 @@ class Vultr extends Module
 
     /**
      * Converts numerically indexed service options arrays into an object with member variables.
-     * 
+     *
      * @param  array $options A numerically indexed array of stdClass objects containing key
      *  and value member variables, or an array containing 'key' and 'value' indexes
      * @return stdClass A stdClass objects with member variables
@@ -2267,7 +2266,7 @@ class Vultr extends Module
     /**
      * Validates whether or not the connection details are valid by attempting to fetch
      * the number of accounts that currently reside on the server.
-     * 
+     *
      * @param string $api_key The Vultr api key
      * @return bool True if the connection is valid, false otherwise
      */
@@ -2301,7 +2300,7 @@ class Vultr extends Module
         // Fetch the correct template of the server
         if ($package->meta->set_template == 'admin') {
             $template = $package->meta->template;
-        } else if ($package->meta->set_template == 'client') {
+        } elseif ($package->meta->set_template == 'client') {
             $template = isset($vars['vultr_template']) ? $vars['vultr_template'] : null;
         }
 
