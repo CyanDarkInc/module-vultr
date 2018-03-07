@@ -1484,6 +1484,54 @@ class Vultr extends Module
     }
 
     /**
+     * Updates the package for the service on the remote server. Sets Input
+     * errors on failure, preventing the service's package from being changed.
+     *
+     * @param stdClass $package_from A stdClass object representing the current package.
+     * @param stdClass $package_to A stdClass object representing the new package.
+     * @param stdClass $service A stdClass object representing the current service.
+     * @param stdClass $parent_package A stdClass object representing the parent
+     *  service's selected package (if the current service is an addon service).
+     * @param stdClass $parent_service A stdClass object representing the parent
+     *  service of the service being changed (if the current service is an addon service).
+     * @return mixed null to maintain the existing meta fields or a numerically
+     *  indexed array of meta fields to be stored for this service containing:
+     *  - key The key for this meta field.
+     *  - value The value for this key.
+     *  - encrypted Whether or not this field should be encrypted (default 0, not encrypted).
+     * @see Module::getModule()
+     * @see Module::getModuleRow()
+     */
+    public function changeServicePackage($package_from, $package_to, $service, $parent_package = null, $parent_service = null)
+    {
+        // Get the module row
+        $row = $this->getModuleRow();
+
+        if ($row) {
+            $api = $this->getApi($row->meta->api_key);
+
+            if ($package_from->meta->server_type == 'server') {
+                $api->loadCommand('vultr_server');
+                $vultr_api = new VultrServer($api);
+            }
+
+            // Get the service fields
+            $service_fields = $this->serviceFieldsToObject($service->fields);
+
+            if ($package_from->meta->server_type == 'server') {
+                $params = [
+                    'SUBID' => $service_fields->vultr_subid,
+                    'VPSPLANID' => $package_to->meta->server_plan
+                ];
+                $this->log('api.vultr.com|upgrade_plan', serialize($params), 'input', true);
+                $vultr_api->upgradePlan($params);
+            }
+        }
+
+        return null;
+    }
+
+    /**
      * Fetches the HTML content to display when viewing the service info in the
      * admin interface.
      *
