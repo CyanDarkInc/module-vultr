@@ -94,7 +94,7 @@ class VultrResponse
         $response = json_decode($data);
 
         if (is_array($response)) {
-            $response = (object) $response;   
+            $response = (object) $response;
         }
 
         return $response;

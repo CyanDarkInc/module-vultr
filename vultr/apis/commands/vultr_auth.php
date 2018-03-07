@@ -27,7 +27,7 @@ class VultrAuth
 
     /**
      * Retrieve information about the current API key.
-     * 
+     *
      * @return stdClass An object containing the api response
      */
     public function info()

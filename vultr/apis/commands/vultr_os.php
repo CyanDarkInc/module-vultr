@@ -27,7 +27,7 @@ class VultrOs
 
     /**
      * Retrieve a list of available operating systems.
-     * 
+     *
      * @return stdClass An object containing the api response
      */
     public function listOs()

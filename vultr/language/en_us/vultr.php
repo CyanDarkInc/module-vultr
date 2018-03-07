@@ -1,6 +1,6 @@
 <?php
 /**
- * en_us language for the vultr module
+ * en_us language for the vultr module.
  */
 // Basics
 $lang['Vultr.name'] = 'Vultr';
@@ -13,7 +13,6 @@ $lang['Vultr.tab_client_actions'] = 'Actions';
 $lang['Vultr.tab_client_snapshots'] = 'Snapshots';
 $lang['Vultr.tab_client_backups'] = 'Backups';
 
-
 // Module management
 $lang['Vultr.add_module_row'] = 'Add Account';
 $lang['Vultr.manage.module_rows_title'] = 'Accounts';
@@ -23,7 +22,6 @@ $lang['Vultr.manage.module_rows.edit'] = 'Edit';
 $lang['Vultr.manage.module_rows.delete'] = 'Delete';
 $lang['Vultr.manage.module_rows.confirm_delete'] = 'Are you sure you want to delete this account?';
 $lang['Vultr.manage.module_rows_no_results'] = 'There are no accounts.';
-
 
 // Add row
 $lang['Vultr.add_row.box_title'] = 'Add Vultr Server';
@@ -35,7 +33,6 @@ $lang['Vultr.edit_row.basic_title'] = 'Basic Settings';
 $lang['Vultr.edit_row.add_btn'] = 'Edit Server';
 
 $lang['Vultr.row_meta.api_key'] = 'API Key';
-
 
 // Package fields
 $lang['Vultr.package_fields.server_type'] = 'Server Type';
@@ -51,7 +48,6 @@ $lang['Vultr.package_fields.surcharge_templates'] = 'Surcharge Templates';
 $lang['Vultr.package_fields.allow_surcharge_templates'] = 'Allow Surcharge Templates';
 $lang['Vultr.package_fields.disallow_surcharge_templates'] = 'Disallow Surcharge Templates';
 
-
 // Service fields
 $lang['Vultr.service_field.subid'] = 'Vultr SUBID';
 $lang['Vultr.service_field.hostname'] = 'Hostname';
@@ -60,7 +56,6 @@ $lang['Vultr.service_field.template'] = 'Template';
 $lang['Vultr.service_field.ipv6'] = 'IPv6 Networking';
 $lang['Vultr.service_field.enable_ipv6'] = 'Enable IPv6';
 $lang['Vultr.service_field.disable_ipv6'] = 'Disable IPv6';
-
 
 // Service management
 $lang['Vultr.tab_actions.status_title'] = 'Server Status';
@@ -92,7 +87,6 @@ $lang['Vultr.tab_backups.restore_backup'] = 'Restore Backup';
 $lang['Vultr.tab_backups.no_backups'] = 'There are currently no backups.';
 $lang['Vultr.tab_backups.backups_disabled'] = 'This server does not have automatic backups enabled or does not support it.';
 
-
 // Client actions
 $lang['Vultr.tab_client_actions.heading_status'] = 'Server Status';
 $lang['Vultr.tab_client_actions.status_online'] = 'Online';
@@ -109,7 +103,6 @@ $lang['Vultr.tab_client_actions.action_password'] = 'Change Password';
 $lang['Vultr.tab_client_actions.heading_reinstall'] = 'Reinstall';
 $lang['Vultr.tab_client_actions.field_template'] = 'Template';
 $lang['Vultr.tab_client_actions.field_reinstall_submit'] = 'Reinstall Template';
-
 
 // Client snapshots
 $lang['Vultr.tab_client_snapshots.snapshots'] = 'Snapshots';
@@ -129,7 +122,6 @@ $lang['Vultr.tab_client_snapshots.heading_create'] = 'Create Snapshot';
 $lang['Vultr.tab_client_snapshots.field_description'] = 'Description';
 $lang['Vultr.tab_client_snapshots.field_create_submit'] = 'Create';
 
-
 // Client backups
 $lang['Vultr.tab_client_backups.backups'] = 'Backups';
 $lang['Vultr.tab_client_backups.backup_id'] = 'Backup ID';
@@ -143,7 +135,6 @@ $lang['Vultr.tab_client_backups.cancel'] = 'Cancel';
 $lang['Vultr.tab_client_backups.no_backups'] = 'There are currently no backups.';
 $lang['Vultr.tab_client_backups.backups_disabled'] = 'This server does not have automatic backups enabled or does not support it.';
 
-
 // Service info
 $lang['Vultr.service_info.hostname'] = 'Hostname';
 $lang['Vultr.service_info.os'] = 'Operating System';
@@ -151,10 +142,8 @@ $lang['Vultr.service_info.location'] = 'Location';
 $lang['Vultr.service_info.main_ip'] = 'Main IP';
 $lang['Vultr.service_info.default_password'] = 'Password';
 
-
 // Tooltips
 $lang['Vultr.service_field.tooltip.subid'] = 'The unique identifier for this subscription.';
-
 
 // Errors
 $lang['Vultr.!error.api_key_valid'] = 'The API Key appears to be invalid.';

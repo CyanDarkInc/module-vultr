@@ -28,7 +28,7 @@ class VultrApp
     /**
      * Retrieve a list of available applications. These refer to applications that
      * can be launched when creating a Vultr VPS.
-     * 
+     *
      * @return stdClass An object containing the api response
      */
     public function listApps()
