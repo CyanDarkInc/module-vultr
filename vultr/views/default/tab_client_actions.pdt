@@ -1,0 +1,80 @@
+    <h4><?php $this->_('Vultr.tab_client_actions.heading_status');?></h4>
+
+    <?php
+    if ($this->Html->ifSet($server_details->power_status) == 'running' || $this->Html->ifSet($server_details->status) == 'active') {
+        $status_class = 'success';
+        $status = 'online';
+    } else {
+        $status_class = 'danger';
+        $status = 'offline';
+    }
+    ?>
+
+    <span class="label label-<?php $this->Html->_($status_class);?>">
+        <i class="fa fa-lightbulb-o"></i> <?php $this->_('Vultr.tab_client_actions.status_' . $this->Html->_($status, true));?>
+    </span>
+
+    <h4><?php $this->_('Vultr.tab_client_actions.heading_actions');?></h4>
+    <div class="row options">
+        <div class="col-md-4">
+            <?php
+            $this->Form->create();
+            $this->Form->fieldHidden('action', 'restart');
+            ?>
+            <button<?php echo $this->Html->ifSet($status) != 'online' ? ' disabled="disabled"' : '';?> class="btn btn-default btn-block btn-success">
+                <i class="fa fa-refresh"></i> <?php $this->_('Vultr.tab_client_actions.action_restart');?>
+            </button>
+            <?php
+            $this->Form->end();
+            ?>
+        </div>
+        <div class="col-md-4">
+            <?php
+            $this->Form->create();
+            $this->Form->fieldHidden('action', 'stop');
+            ?>
+            <button<?php echo $this->Html->ifSet($status) != 'online' ? ' disabled="disabled"' : '';?> class="btn btn-default btn-block btn-danger">
+                <i class="fa fa-stop"></i> <?php $this->_('Vultr.tab_client_actions.action_stop');?>
+            </button>
+            <?php
+            $this->Form->end();
+            ?>
+        </div>
+        <div class="col-md-4">
+            <?php
+            $this->Form->create();
+            $this->Form->fieldHidden('action', 'start');
+            ?>
+            <button<?php echo $this->Html->ifSet($status) != 'offline' ? ' disabled="disabled"' : '';?> class="btn btn-default btn-block">
+                <i class="fa fa-play"></i> <?php $this->_('Vultr.tab_client_actions.action_start');?>
+            </button>
+            <?php
+            $this->Form->end();
+            ?>
+        </div>
+    </div>
+
+    <hr>
+
+    <h4><?php $this->_('Vultr.tab_client_actions.heading_reinstall');?></h4>
+    <div class="row">
+        <?php
+        $this->Form->create();
+        $this->Form->fieldHidden('action', 'reinstall');
+        ?>
+        <div class="col-md-12">
+            <div class="form-group">
+                <?php
+                $this->Form->label($this->_('Vultr.tab_client_actions.field_template', true), 'template');
+                $this->Form->fieldSelect('template', $this->Html->ifSet($templates), $this->Html->ifSet($vars->template), ['id' => 'template', 'class'=>'form-control']);
+                ?>
+            </div>
+
+            <button class="btn btn-default pull-right">
+                <i class="fa fa-download"></i> <?php $this->_('Vultr.tab_client_actions.field_reinstall_submit');?>
+            </button>
+        </div>
+        <?php
+        $this->Form->end();
+        ?>
+    </div>
