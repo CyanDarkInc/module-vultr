@@ -71,6 +71,7 @@ $lang['Vultr.tab_actions.action_change_template'] = 'Change Template';
 $lang['Vultr.tab_actions.heading_change_template'] = 'Change Template';
 $lang['Vultr.tab_actions.field_template'] = 'Template';
 $lang['Vultr.tab_actions.field_change_template_submit'] = 'Change Template';
+$lang['Vultr.tab_actions.action_kvm_console'] = 'KVM Console';
 
 $lang['Vultr.tab_stats.server_information'] = 'Server Information';
 $lang['Vultr.tab_stats.info_heading.field'] = 'Field';
@@ -118,6 +119,7 @@ $lang['Vultr.tab_client_actions.action_stop'] = 'Stop';
 $lang['Vultr.tab_client_actions.action_start'] = 'Start';
 $lang['Vultr.tab_client_actions.action_reinstall_template'] = 'Reinstall Template';
 $lang['Vultr.tab_client_actions.action_change_template'] = 'Change Template';
+$lang['Vultr.tab_client_actions.action_kvm_console'] = 'KVM Console';
 
 $lang['Vultr.tab_client_actions.heading_change_template'] = 'Change Template';
 $lang['Vultr.tab_client_actions.field_template'] = 'Template';
