@@ -58,6 +58,6 @@
 
 <script type="text/javascript">
     $(document).ready(function() {
-        $('#manage_vultr a.manage[rel]').blestaModalConfirm({base_url: '<?php echo $this->base_uri; ?>', close: '<?php $this->_('AppController.modal.text_close');?>', submit: true});
+        $('#manage_vultr a.manage[rel]').blestaModalConfirm({base_url: '<?php echo $this->base_uri; ?>', close: '<?php $this->_('AppController.modal.text_close'); ?>', submit: true});
     });
 </script>
