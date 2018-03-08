@@ -37,6 +37,7 @@ class Vultr extends Module
     {
         $tabs = [
             'tabActions' => Language::_('Vultr.tab_actions', true),
+            'tabStats' => Language::_('Vultr.tab_stats', true),
             'tabSnapshots' => Language::_('Vultr.tab_snapshots', true),
             'tabBackups' => Language::_('Vultr.tab_backups', true)
         ];
@@ -61,6 +62,7 @@ class Vultr extends Module
     {
         $tabs = [
             'tabClientActions' => Language::_('Vultr.tab_client_actions', true),
+            'tabClientStats' => Language::_('Vultr.tab_client_stats', true),
             'tabClientSnapshots' => Language::_('Vultr.tab_client_snapshots', true),
             'tabClientBackups' => Language::_('Vultr.tab_client_backups', true),
         ];
@@ -1770,6 +1772,66 @@ class Vultr extends Module
     }
 
     /**
+     * Stats tab.
+     *
+     * @param stdClass $package A stdClass object representing the current package
+     * @param stdClass $service A stdClass object representing the current service
+     * @param array $get Any GET parameters
+     * @param array $post Any POST parameters
+     * @param array $files Any FILES parameters
+     * @return string The string representing the contents of this tab
+     */
+    public function tabStats($package, $service, array $get = null, array $post = null, array $files = null)
+    {
+        // Get module row
+        $row = $this->getModuleRow();
+
+        // Set the current view
+        $this->view = new View('tab_stats', 'default');
+        $this->view->base_uri = $this->base_uri;
+
+        // Load the helpers required for this view
+        Loader::loadHelpers($this, ['Form', 'Html']);
+
+        // Get the service fields
+        $service_fields = $this->serviceFieldsToObject($service->fields);
+
+        // Initialize the Vultr API
+        $api = $this->getApi($row->meta->api_key);
+
+        if ($package->meta->server_type == 'server') {
+            $api->loadCommand('vultr_server');
+            $vultr_api = new VultrServer($api);
+        } else {
+            $api->loadCommand('vultr_baremetal');
+            $vultr_api = new VultrBaremetal($api);
+        }
+
+        // Get the server details
+        $params = [
+            'SUBID' => $service_fields->vultr_subid
+        ];
+        $this->log('api.vultr.com|list', serialize($params), 'input', true);
+
+        if ($package->meta->server_type == 'server') {
+            $server_details = (array) $this->parseResponse($vultr_api->listServers($params));
+        } else {
+            $server_details = (array) $this->parseResponse($vultr_api->listBaremetal($params));
+        }
+
+        $this->view->set('module_row', $row);
+        $this->view->set('package', $package);
+        $this->view->set('service', $service);
+        $this->view->set('service_fields', $service_fields);
+        $this->view->set('server_details', (isset($server_details) ? $server_details : []));
+        $this->view->set('vars', (isset($vars) ? $vars : new stdClass()));
+
+        $this->view->setDefaultView('components' . DS . 'modules' . DS . 'vultr' . DS);
+
+        return $this->view->fetch();
+    }
+
+    /**
      * Snapshots tab.
      *
      * @param stdClass $package A stdClass object representing the current package
@@ -2061,6 +2123,66 @@ class Vultr extends Module
         $this->view->set('service_fields', $service_fields);
         $this->view->set('templates', $templates);
         $this->view->set('server_details', (isset($server_details) ? $server_details : new stdClass()));
+        $this->view->set('vars', (isset($vars) ? $vars : new stdClass()));
+
+        $this->view->setDefaultView('components' . DS . 'modules' . DS . 'vultr' . DS);
+
+        return $this->view->fetch();
+    }
+
+    /**
+     * Client Stats tab.
+     *
+     * @param stdClass $package A stdClass object representing the current package
+     * @param stdClass $service A stdClass object representing the current service
+     * @param array $get Any GET parameters
+     * @param array $post Any POST parameters
+     * @param array $files Any FILES parameters
+     * @return string The string representing the contents of this tab
+     */
+    public function tabClientStats($package, $service, array $get = null, array $post = null, array $files = null)
+    {
+        // Get module row
+        $row = $this->getModuleRow();
+
+        // Set the current view
+        $this->view = new View('tab_client_stats', 'default');
+        $this->view->base_uri = $this->base_uri;
+
+        // Load the helpers required for this view
+        Loader::loadHelpers($this, ['Form', 'Html']);
+
+        // Get the service fields
+        $service_fields = $this->serviceFieldsToObject($service->fields);
+
+        // Initialize the Vultr API
+        $api = $this->getApi($row->meta->api_key);
+
+        if ($package->meta->server_type == 'server') {
+            $api->loadCommand('vultr_server');
+            $vultr_api = new VultrServer($api);
+        } else {
+            $api->loadCommand('vultr_baremetal');
+            $vultr_api = new VultrBaremetal($api);
+        }
+
+        // Get the server details
+        $params = [
+            'SUBID' => $service_fields->vultr_subid
+        ];
+        $this->log('api.vultr.com|list', serialize($params), 'input', true);
+
+        if ($package->meta->server_type == 'server') {
+            $server_details = (array) $this->parseResponse($vultr_api->listServers($params));
+        } else {
+            $server_details = (array) $this->parseResponse($vultr_api->listBaremetal($params));
+        }
+
+        $this->view->set('module_row', $row);
+        $this->view->set('package', $package);
+        $this->view->set('service', $service);
+        $this->view->set('service_fields', $service_fields);
+        $this->view->set('server_details', (isset($server_details) ? $server_details : []));
         $this->view->set('vars', (isset($vars) ? $vars : new stdClass()));
 
         $this->view->setDefaultView('components' . DS . 'modules' . DS . 'vultr' . DS);

@@ -15,7 +15,7 @@
     </span>
 
     <h4><?php $this->_('Vultr.tab_client_actions.heading_actions'); ?></h4>
-    <div class="row">
+    <div class="row options">
         <div class="col-md-4">
             <?php
             $this->Form->create();
@@ -33,7 +33,7 @@
             $this->Form->fieldHidden('action', 'reinstall');
             ?>
             <button class="btn btn-default btn-block" style="margin-top: 10px;">
-                <i class="fa fa-refresh"></i> <?php $this->_('Vultr.tab_client_actions.action_reinstall'); ?>
+                <i class="fa fa-refresh"></i> <?php $this->_('Vultr.tab_client_actions.action_reinstall_template'); ?>
             </button>
             <?php
             $this->Form->end();
@@ -50,6 +50,10 @@
             <?php
             $this->Form->end();
             ?>
+
+            <a href="#" class="change_template btn btn-default btn-block" style="margin-top: 10px;">
+                <i class="fa fa-download"></i> <?php $this->_('Vultr.tab_client_actions.action_change_template');?>
+            </a>
         </div>
         <div class="col-md-4">
             <?php
@@ -68,30 +72,59 @@
     <?php
     if ($package->meta->set_template == 'client') {
     ?>
-    <hr>
+    <div class="clearfix"></div>
+    <div id="change_template" style="display:none;">
+        <hr>
+        <h4><?php $this->_('Vultr.tab_client_actions.heading_change_template'); ?></h4>
+        <div class="row">
+            <?php
+            $this->Form->create();
+            $this->Form->fieldHidden('action', 'change_template');
+            ?>
+            <div class="col-md-12">
+                <div class="form-group">
+                    <?php
+                    $this->Form->label($this->_('Vultr.tab_client_actions.field_template', true), 'template');
+                    $this->Form->fieldSelect('template', $this->Html->ifSet($templates), $this->Html->ifSet($vars->template, $service_fields->vultr_template), ['id' => 'template', 'class' => 'form-control']);
+                    ?>
+                </div>
 
-    <h4><?php $this->_('Vultr.tab_client_actions.heading_change_template'); ?></h4>
-    <div class="row">
-        <?php
-        $this->Form->create();
-        $this->Form->fieldHidden('action', 'change_template');
-        ?>
-        <div class="col-md-12">
-            <div class="form-group">
-                <?php
-                $this->Form->label($this->_('Vultr.tab_client_actions.field_template', true), 'template');
-                $this->Form->fieldSelect('template', $this->Html->ifSet($templates), $this->Html->ifSet($vars->template, $service_fields->vultr_template), ['id' => 'template', 'class' => 'form-control']);
-                ?>
+                <button class="btn btn-default pull-right">
+                    <i class="fa fa-download"></i> <?php $this->_('Vultr.tab_client_actions.field_change_template_submit'); ?>
+                </button>
             </div>
-
-            <button class="btn btn-default pull-right">
-                <i class="fa fa-download"></i> <?php $this->_('Vultr.tab_client_actions.field_change_template_submit'); ?>
-            </button>
+            <?php
+            $this->Form->end();
+            ?>
         </div>
-        <?php
-        $this->Form->end();
-        ?>
     </div>
     <?php
     }
     ?>
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+            <?php
+            if ($this->Html->ifSet($vars->template, false)) {
+            ?>
+            showSection('change_template');
+            <?php
+            }
+            ?>
+
+            $('.options').on('click', 'a.change_template', function(e) {
+                var item_class = "change_template";
+
+                hideSections();
+                showSection(item_class);
+            });
+
+            function hideSections() {
+                $('#change_template').hide();
+            }
+
+            function showSection(id) {
+                $('#' + id).show();
+            }
+        });
+    </script>

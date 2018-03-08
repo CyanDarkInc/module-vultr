@@ -7,9 +7,11 @@ $lang['Vultr.name'] = 'Vultr';
 $lang['Vultr.module_row'] = 'Account';
 $lang['Vultr.module_row_plural'] = 'Accounts';
 $lang['Vultr.tab_actions'] = 'Actions';
+$lang['Vultr.tab_stats'] = 'Statistics';
 $lang['Vultr.tab_snapshots'] = 'Snapshots';
 $lang['Vultr.tab_backups'] = 'Backups';
 $lang['Vultr.tab_client_actions'] = 'Actions';
+$lang['Vultr.tab_client_stats'] = 'Statistics';
 $lang['Vultr.tab_client_snapshots'] = 'Snapshots';
 $lang['Vultr.tab_client_backups'] = 'Backups';
 
@@ -64,10 +66,26 @@ $lang['Vultr.tab_actions.server_title'] = 'Server Actions';
 $lang['Vultr.tab_actions.action_restart'] = 'Restart';
 $lang['Vultr.tab_actions.action_stop'] = 'Stop';
 $lang['Vultr.tab_actions.action_start'] = 'Start';
-$lang['Vultr.tab_actions.action_reinstall'] = 'Reinstall Template';
+$lang['Vultr.tab_actions.action_reinstall_template'] = 'Reinstall Template';
+$lang['Vultr.tab_actions.action_change_template'] = 'Change Template';
 $lang['Vultr.tab_actions.heading_change_template'] = 'Change Template';
 $lang['Vultr.tab_actions.field_template'] = 'Template';
 $lang['Vultr.tab_actions.field_change_template_submit'] = 'Change Template';
+
+$lang['Vultr.tab_stats.server_information'] = 'Server Information';
+$lang['Vultr.tab_stats.info_heading.field'] = 'Field';
+$lang['Vultr.tab_stats.info_heading.value'] = 'Value';
+$lang['Vultr.tab_stats.info.os'] = 'Operating System';
+$lang['Vultr.tab_stats.info.ram'] = 'Server RAM';
+$lang['Vultr.tab_stats.info.disk'] = 'Server Disk';
+$lang['Vultr.tab_stats.info.main_ip'] = 'Main IP';
+$lang['Vultr.tab_stats.info.vcpu_count'] = 'Virtual CPUs';
+$lang['Vultr.tab_stats.info.location'] = 'Location';
+$lang['Vultr.tab_stats.info.default_password'] = 'Default Password';
+$lang['Vultr.tab_stats.info.current_bandwidth_gb'] = 'Current Bandwidth (in GB)';
+$lang['Vultr.tab_stats.info.allowed_bandwidth_gb'] = 'Allowed Bandiwdth (in GB)';
+$lang['Vultr.tab_stats.info.netmask_v4'] = 'IPv4 Netmask';
+$lang['Vultr.tab_stats.info.gateway_v4'] = 'IPv4 Gateway';
 
 $lang['Vultr.tab_snapshots.snapshots'] = 'Snapshots';
 $lang['Vultr.tab_snapshots.heading_row_snapshot_id'] = 'Snapshot ID';
@@ -98,11 +116,29 @@ $lang['Vultr.tab_client_actions.heading_actions'] = 'Actions';
 $lang['Vultr.tab_client_actions.action_restart'] = 'Restart';
 $lang['Vultr.tab_client_actions.action_stop'] = 'Stop';
 $lang['Vultr.tab_client_actions.action_start'] = 'Start';
-$lang['Vultr.tab_client_actions.action_reinstall'] = 'Reinstall Template';
+$lang['Vultr.tab_client_actions.action_reinstall_template'] = 'Reinstall Template';
+$lang['Vultr.tab_client_actions.action_change_template'] = 'Change Template';
 
 $lang['Vultr.tab_client_actions.heading_change_template'] = 'Change Template';
 $lang['Vultr.tab_client_actions.field_template'] = 'Template';
 $lang['Vultr.tab_client_actions.field_change_template_submit'] = 'Change Template';
+
+
+// Client statistics
+$lang['Vultr.tab_client_stats.server_information'] = 'Server Information';
+$lang['Vultr.tab_client_stats.info_heading.field'] = 'Field';
+$lang['Vultr.tab_client_stats.info_heading.value'] = 'Value';
+$lang['Vultr.tab_client_stats.info.os'] = 'Operating System';
+$lang['Vultr.tab_client_stats.info.ram'] = 'Server RAM';
+$lang['Vultr.tab_client_stats.info.disk'] = 'Server Disk';
+$lang['Vultr.tab_client_stats.info.main_ip'] = 'Main IP';
+$lang['Vultr.tab_client_stats.info.vcpu_count'] = 'Virtual CPUs';
+$lang['Vultr.tab_client_stats.info.location'] = 'Location';
+$lang['Vultr.tab_client_stats.info.default_password'] = 'Default Password';
+$lang['Vultr.tab_client_stats.info.current_bandwidth_gb'] = 'Current Bandwidth (in GB)';
+$lang['Vultr.tab_client_stats.info.allowed_bandwidth_gb'] = 'Allowed Bandiwdth (in GB)';
+$lang['Vultr.tab_client_stats.info.netmask_v4'] = 'IPv4 Netmask';
+$lang['Vultr.tab_client_stats.info.gateway_v4'] = 'IPv4 Gateway';
 
 // Client snapshots
 $lang['Vultr.tab_client_snapshots.snapshots'] = 'Snapshots';

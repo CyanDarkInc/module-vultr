@@ -34,17 +34,6 @@
                 <?php
                 $this->Form->end();
                 ?>
-
-                <?php
-                $this->Form->create();
-                $this->Form->fieldHidden('action', 'reinstall');
-                ?>
-                <button class="btn btn-default btn-block" style="margin-top: 10px;">
-                    <i class="fa fa-refresh"></i> <?php $this->_('Vultr.tab_client_actions.action_reinstall'); ?>
-                </button>
-                <?php
-                $this->Form->end();
-                ?>
             </div>
             <div class="col-md-4">
                 <?php
@@ -74,13 +63,16 @@
     </div>
 
     <?php
-    if ($package->meta->set_template == 'client') {
-        $this->Form->create();
-        $this->Form->fieldHidden('action', 'change_template');
+    $this->Form->create();
+    $this->Form->fieldHidden('action', 'change_template');
     ?>
     <div class="title_row">
         <h3><?php $this->_('Vultr.tab_actions.heading_change_template'); ?></h3>
     </div>
+
+    <?php
+    if ($package->meta->set_template == 'client') {
+    ?>
     <div class="pad">
         <ul>
             <li>
@@ -91,13 +83,32 @@
             </li>
         </ul>
     </div>
+    <?php
+    }
+    ?>
 
     <div class="pad">
         <div class="links_row">
+            <?php
+            if ($package->meta->set_template == 'client') {
+            ?>
             <a class="btn btn-primary submit pull-right" href="#"><span><?php $this->_('Vultr.tab_actions.field_change_template_submit'); ?></span></a>
+            <?php
+            }
+            ?>
+
+            <?php
+            $this->Form->create();
+            $this->Form->fieldHidden('action', 'reinstall');
+            ?>
+            <button class="btn btn-default pull-right" style="margin-top: 0px;">
+                <?php $this->_('Vultr.tab_client_actions.action_reinstall_template'); ?>
+            </button>
+            <?php
+            $this->Form->end();
+            ?>
         </div>
     </div>
     <?php
-        $this->Form->end();
-    }
+    $this->Form->end();
     ?>
