@@ -2181,7 +2181,7 @@ class Vultr extends Module
         } else {
             $server_details = (array) $this->parseResponse($vultr_api->listBaremetal($params));
         }
-
+print_r($server_details);
         $this->view->set('module_row', $row);
         $this->view->set('package', $package);
         $this->view->set('service', $service);
