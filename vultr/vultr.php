@@ -633,7 +633,7 @@ class Vultr extends Module
      */
     public function addModuleRow(array &$vars)
     {
-        $meta_fields = ['api_key'];
+        $meta_fields = ['account_name', 'api_key'];
         $encrypted_fields = ['api_key'];
 
         $this->Input->setRules($this->getRowRules($vars));
@@ -670,7 +670,7 @@ class Vultr extends Module
      */
     public function editModuleRow($module_row, array &$vars)
     {
-        $meta_fields = ['api_key'];
+        $meta_fields = ['account_name', 'api_key'];
         $encrypted_fields = ['api_key'];
 
         // Set unspecified checkboxes
@@ -2445,6 +2445,13 @@ class Vultr extends Module
     private function getRowRules(&$vars)
     {
         $rules = [
+            'account_name' => [
+                'valid' => [
+                    'rule' => 'isEmpty',
+                    'negate' => true,
+                    'message' => Language::_('Vultr.!error.account_name_valid', true)
+                ]
+            ],
             'api_key' => [
                 'valid' => [
                     'last' => true,

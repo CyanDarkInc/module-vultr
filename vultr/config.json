@@ -14,7 +14,7 @@
     "module": {
         "row": "Vultr.module_row",
         "rows": "Vultr.module_row_plural",
-        "row_key": "api_key"
+        "row_key": "account_name"
     },
     "package": {
         "name_key": "vultr_hostname"

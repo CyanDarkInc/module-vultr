@@ -16,7 +16,7 @@ $lang['Vultr.tab_client_backups'] = 'Backups';
 // Module management
 $lang['Vultr.add_module_row'] = 'Add Account';
 $lang['Vultr.manage.module_rows_title'] = 'Accounts';
-$lang['Vultr.manage.module_rows_heading.key'] = 'API Key';
+$lang['Vultr.manage.module_rows_heading.name'] = 'Account';
 $lang['Vultr.manage.module_rows_heading.options'] = 'Options';
 $lang['Vultr.manage.module_rows.edit'] = 'Edit';
 $lang['Vultr.manage.module_rows.delete'] = 'Delete';
@@ -32,6 +32,7 @@ $lang['Vultr.edit_row.box_title'] = 'Edit Vultr Server';
 $lang['Vultr.edit_row.basic_title'] = 'Basic Settings';
 $lang['Vultr.edit_row.add_btn'] = 'Edit Server';
 
+$lang['Vultr.row_meta.account_name'] = 'Account Name';
 $lang['Vultr.row_meta.api_key'] = 'API Key';
 
 // Package fields
@@ -146,6 +147,7 @@ $lang['Vultr.service_info.default_password'] = 'Password';
 $lang['Vultr.service_field.tooltip.subid'] = 'The unique identifier for this subscription.';
 
 // Errors
+$lang['Vultr.!error.account_name_valid'] = 'Please enter a valid Account Name.';
 $lang['Vultr.!error.api_key_valid'] = 'The API Key appears to be invalid.';
 $lang['Vultr.!error.api_key_valid_connection'] = 'A connection to the server could not be established. Please check to ensure that the API Key is correct.';
 

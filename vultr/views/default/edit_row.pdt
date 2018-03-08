@@ -13,6 +13,12 @@
                 <ul>
                     <li>
                         <?php
+                        $this->Form->label($this->_('Vultr.row_meta.account_name', true), 'account_name');
+                        $this->Form->fieldText('account_name', $this->Html->ifSet($vars->account_name));
+                        ?>
+                    </li>
+                    <li>
+                        <?php
                         $this->Form->label($this->_('Vultr.row_meta.api_key', true), 'api_key');
                         $this->Form->fieldText('api_key', $this->Html->ifSet($vars->api_key));
                         ?>
