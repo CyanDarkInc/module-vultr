@@ -83,7 +83,7 @@ $lang['Vultr.tab_stats.info.vcpu_count'] = 'Virtual CPUs';
 $lang['Vultr.tab_stats.info.location'] = 'Location';
 $lang['Vultr.tab_stats.info.default_password'] = 'Default Password';
 $lang['Vultr.tab_stats.info.current_bandwidth_gb'] = 'Current Bandwidth (in GB)';
-$lang['Vultr.tab_stats.info.allowed_bandwidth_gb'] = 'Allowed Bandiwdth (in GB)';
+$lang['Vultr.tab_stats.info.allowed_bandwidth_gb'] = 'Allowed Bandwidth (in GB)';
 $lang['Vultr.tab_stats.info.netmask_v4'] = 'IPv4 Netmask';
 $lang['Vultr.tab_stats.info.gateway_v4'] = 'IPv4 Gateway';
 
@@ -136,7 +136,7 @@ $lang['Vultr.tab_client_stats.info.vcpu_count'] = 'Virtual CPUs';
 $lang['Vultr.tab_client_stats.info.location'] = 'Location';
 $lang['Vultr.tab_client_stats.info.default_password'] = 'Default Password';
 $lang['Vultr.tab_client_stats.info.current_bandwidth_gb'] = 'Current Bandwidth (in GB)';
-$lang['Vultr.tab_client_stats.info.allowed_bandwidth_gb'] = 'Allowed Bandiwdth (in GB)';
+$lang['Vultr.tab_client_stats.info.allowed_bandwidth_gb'] = 'Allowed Bandwidth (in GB)';
 $lang['Vultr.tab_client_stats.info.netmask_v4'] = 'IPv4 Netmask';
 $lang['Vultr.tab_client_stats.info.gateway_v4'] = 'IPv4 Gateway';
 
