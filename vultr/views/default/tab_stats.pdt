@@ -1,13 +1,13 @@
 
     <div class="title_row first">
-        <h3><?php $this->_('Vultr.tab_stats.server_information');?></h3>
+        <h3><?php $this->_('Vultr.tab_stats.server_information'); ?></h3>
     </div>
     <div class="pad">
         <table class="table">
             <thead>
                 <tr class="heading_row">
-                    <td style="width: 50%;"><?php $this->_('Vultr.tab_stats.info_heading.field');?></td>
-                    <td class="last"><?php $this->_('Vultr.tab_stats.info_heading.value');?></td>
+                    <td style="width: 50%;"><?php $this->_('Vultr.tab_stats.info_heading.field'); ?></td>
+                    <td class="last"><?php $this->_('Vultr.tab_stats.info_heading.value'); ?></td>
                 </tr>
             </thead>
             <tbody>
@@ -17,9 +17,9 @@
                 foreach ($server_details as $key => $value) {
                     if (in_array($key, $keys)) {
                         ?>
-                    <tr<?php echo $this->Html->concat(' ', ($i % 2 == 1) ? ' class="odd_row"' : '', '');?>>
-                        <td><?php $this->_('Vultr.tab_stats.info.' . $key);?></td>
-                        <td><?php $this->Html->_($value);?></td>
+                    <tr<?php echo $this->Html->concat(' ', ($i % 2 == 1) ? ' class="odd_row"' : '', ''); ?>>
+                        <td><?php $this->_('Vultr.tab_stats.info.' . $key); ?></td>
+                        <td><?php $this->Html->_($value); ?></td>
                     </tr>
                     <?php
                         $i++;
