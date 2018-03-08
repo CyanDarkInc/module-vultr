@@ -1,11 +1,11 @@
 
-    <h4><?php $this->_('Vultr.tab_client_stats.server_information');?></h4>
+    <h4><?php $this->_('Vultr.tab_client_stats.server_information'); ?></h4>
     <div class="table-responsive">
         <table class="table table-curved table-striped">
             <thead>
                 <tr>
-                    <th style="width: 50%;"><?php $this->_('Vultr.tab_client_stats.info_heading.field');?></th>
-                    <th><?php $this->_('Vultr.tab_client_stats.info_heading.value');?></th>
+                    <th style="width: 50%;"><?php $this->_('Vultr.tab_client_stats.info_heading.field'); ?></th>
+                    <th><?php $this->_('Vultr.tab_client_stats.info_heading.value'); ?></th>
                 </tr>
             </thead>
             <tbody>
@@ -15,8 +15,8 @@
                 if (in_array($key, $keys)) {
                     ?>
                 <tr>
-                    <td><?php $this->_('Vultr.tab_client_stats.info.' . $key);?></td>
-                    <td><?php $this->Html->_($value);?></td>
+                    <td><?php $this->_('Vultr.tab_client_stats.info.' . $key); ?></td>
+                    <td><?php $this->Html->_($value); ?></td>
                 </tr>
                 <?php
                 }

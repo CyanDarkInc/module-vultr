@@ -125,7 +125,6 @@ $lang['Vultr.tab_client_actions.heading_change_template'] = 'Change Template';
 $lang['Vultr.tab_client_actions.field_template'] = 'Template';
 $lang['Vultr.tab_client_actions.field_change_template_submit'] = 'Change Template';
 
-
 // Client statistics
 $lang['Vultr.tab_client_stats.server_information'] = 'Server Information';
 $lang['Vultr.tab_client_stats.info_heading.field'] = 'Field';
