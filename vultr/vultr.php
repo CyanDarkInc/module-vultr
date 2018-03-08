@@ -995,7 +995,7 @@ class Vultr extends Module
      */
     public function validateService($package, array $vars = null)
     {
-        $this->Input->setRules($this->getServiceRules($vars));
+        $this->Input->setRules($this->getServiceRules($vars, $package));
 
         return $this->Input->validates($vars);
     }
@@ -1009,7 +1009,7 @@ class Vultr extends Module
      */
     public function validateServiceEdit($service, array $vars = null)
     {
-        $this->Input->setRules($this->getServiceRules($vars, true));
+        $this->Input->setRules($this->getServiceRules($vars, null, true));
 
         return $this->Input->validates($vars);
     }
@@ -1018,10 +1018,11 @@ class Vultr extends Module
      * Returns the rule set for adding/editing a service.
      *
      * @param array $vars A list of input vars
+     * @param stdClass $package A stdClass object representing the selected package
      * @param bool $edit True to get the edit rules, false for the add rules
      * @return array Service rules
      */
-    private function getServiceRules(array $vars = null, $edit = false)
+    private function getServiceRules(array $vars = null, $package = null, $edit = false)
     {
         $rules = [
             'vultr_hostname' => [
@@ -1035,14 +1036,29 @@ class Vultr extends Module
                     'rule' => [[$this, 'validateLocation']],
                     'message' => Language::_('Vultr.!error.vultr_location.valid', true)
                 ]
-            ],
-            'vultr_template' => [
-                'valid' => [
-                    'rule' => [[$this, 'validateTemplate']],
-                    'message' => Language::_('Vultr.!error.vultr_template.valid', true)
-                ]
             ]
         ];
+
+        // Template must be given if it can be set by the client
+        if (!is_null($package)) {
+            if (isset($package->meta->set_template) && $package->meta->set_template == 'client') {
+                $rules['vultr_template'] = [
+                    'valid' => [
+                        'rule' => [[$this, 'validateTemplate']],
+                        'message' => Language::_('Vultr.!error.vultr_template.valid', true)
+                    ]
+                ];
+            }
+        } else {
+            if (isset($service_fields->vultr_template) && isset($vars['vultr_template']) && $service_fields->vultr_template != $vars['vultr_template']) {
+                $rules['vultr_template'] = [
+                    'valid' => [
+                        'rule' => [[$this, 'validateTemplate']],
+                        'message' => Language::_('Vultr.!error.vultr_template.valid', true)
+                    ]
+                ];
+            }
+        }
 
         if ($edit) {
             // If this is an edit and none of the following fields are given then don't
