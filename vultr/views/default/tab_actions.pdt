@@ -67,7 +67,7 @@
                 $this->Form->create();
                 $this->Form->fieldHidden('action', 'start');
                 ?>
-                <button<?php echo $this->Html->ifSet($status) != 'offline' && !isset($server_details->status) ? ' disabled="disabled"' : ''; ?> class="btn btn-default btn-block">
+                <button<?php echo $this->Html->ifSet($status) != 'offline' || $package->meta->server_type == 'baremetal' ? ' disabled="disabled"' : ''; ?> class="btn btn-default btn-block">
                     <i class="fa fa-play"></i> <?php $this->_('Vultr.tab_actions.action_start'); ?>
                 </button>
                 <?php

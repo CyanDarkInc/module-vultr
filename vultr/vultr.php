@@ -1729,16 +1729,18 @@ class Vultr extends Module
                     $vultr_api->reinstall($params);
                     break;
                 case 'change_template':
-                    Loader::loadModels($this, ['Services']);
+                    if ($package->meta->set_template == 'client') {
+                        Loader::loadModels($this, ['Services']);
 
-                    $data = [
-                        'vultr_subid' => $service_fields->vultr_subid,
-                        'vultr_template' => $this->Html->ifSet($post['template'])
-                    ];
-                    $this->Services->edit($service->id, $data);
+                        $data = [
+                            'vultr_subid' => $service_fields->vultr_subid,
+                            'vultr_template' => $this->Html->ifSet($post['template'])
+                        ];
+                        $this->Services->edit($service->id, $data);
 
-                    if ($this->Services->errors()) {
-                        $this->Input->setErrors($this->Services->errors());
+                        if ($this->Services->errors()) {
+                            $this->Input->setErrors($this->Services->errors());
+                        }
                     }
                     break;
                 default:
@@ -2088,16 +2090,18 @@ class Vultr extends Module
                     $vultr_api->reinstall($params);
                     break;
                 case 'change_template':
-                    Loader::loadModels($this, ['Services']);
+                    if ($package->meta->set_template == 'client') {
+                        Loader::loadModels($this, ['Services']);
 
-                    $data = [
-                        'vultr_subid' => $service_fields->vultr_subid,
-                        'vultr_template' => $this->Html->ifSet($post['template'])
-                    ];
-                    $this->Services->edit($service->id, $data);
+                        $data = [
+                            'vultr_subid' => $service_fields->vultr_subid,
+                            'vultr_template' => $this->Html->ifSet($post['template'])
+                        ];
+                        $this->Services->edit($service->id, $data);
 
-                    if ($this->Services->errors()) {
-                        $this->Input->setErrors($this->Services->errors());
+                        if ($this->Services->errors()) {
+                            $this->Input->setErrors($this->Services->errors());
+                        }
                     }
                     break;
                 default:
