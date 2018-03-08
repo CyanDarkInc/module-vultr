@@ -1720,6 +1720,13 @@ class Vultr extends Module
                     $vultr_api->reboot($params);
                     break;
                 case 'reinstall':
+                    $params = [
+                        'SUBID' => $service_fields->vultr_subid,
+                        'hostname' => $service_fields->vultr_hostname
+                    ];
+                    $vultr_api->reinstall($params);
+                    break;
+                case 'change_template':
                     Loader::loadModels($this, ['Services']);
 
                     $data = [
@@ -2012,6 +2019,13 @@ class Vultr extends Module
                     $vultr_api->reboot($params);
                     break;
                 case 'reinstall':
+                    $params = [
+                        'SUBID' => $service_fields->vultr_subid,
+                        'hostname' => $service_fields->vultr_hostname
+                    ];
+                    $vultr_api->reinstall($params);
+                    break;
+                case 'change_template':
                     Loader::loadModels($this, ['Services']);
 
                     $data = [

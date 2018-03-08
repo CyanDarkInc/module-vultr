@@ -64,9 +64,10 @@ $lang['Vultr.tab_actions.server_title'] = 'Server Actions';
 $lang['Vultr.tab_actions.action_restart'] = 'Restart';
 $lang['Vultr.tab_actions.action_stop'] = 'Stop';
 $lang['Vultr.tab_actions.action_start'] = 'Start';
-$lang['Vultr.tab_actions.heading_reinstall'] = 'Reinstall';
+$lang['Vultr.tab_actions.action_reinstall'] = 'Reinstall Template';
+$lang['Vultr.tab_actions.heading_change_template'] = 'Change Template';
 $lang['Vultr.tab_actions.field_template'] = 'Template';
-$lang['Vultr.tab_actions.field_reinstall_submit'] = 'Reinstall Template';
+$lang['Vultr.tab_actions.field_change_template_submit'] = 'Change Template';
 
 $lang['Vultr.tab_snapshots.snapshots'] = 'Snapshots';
 $lang['Vultr.tab_snapshots.heading_row_snapshot_id'] = 'Snapshot ID';
@@ -95,15 +96,13 @@ $lang['Vultr.tab_client_actions.status_offline'] = 'Offline';
 
 $lang['Vultr.tab_client_actions.heading_actions'] = 'Actions';
 $lang['Vultr.tab_client_actions.action_restart'] = 'Restart';
-$lang['Vultr.tab_client_actions.action_genre'] = 'Change Genre';
 $lang['Vultr.tab_client_actions.action_stop'] = 'Stop';
-$lang['Vultr.tab_client_actions.action_radio_title'] = 'Change Radio Title';
 $lang['Vultr.tab_client_actions.action_start'] = 'Start';
-$lang['Vultr.tab_client_actions.action_password'] = 'Change Password';
+$lang['Vultr.tab_client_actions.action_reinstall'] = 'Reinstall Template';
 
-$lang['Vultr.tab_client_actions.heading_reinstall'] = 'Reinstall';
+$lang['Vultr.tab_client_actions.heading_change_template'] = 'Change Template';
 $lang['Vultr.tab_client_actions.field_template'] = 'Template';
-$lang['Vultr.tab_client_actions.field_reinstall_submit'] = 'Reinstall Template';
+$lang['Vultr.tab_client_actions.field_change_template_submit'] = 'Change Template';
 
 // Client snapshots
 $lang['Vultr.tab_client_snapshots.snapshots'] = 'Snapshots';
