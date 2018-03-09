@@ -32,7 +32,7 @@
 
     <?php
         if (isset($application_details->app_info)) {
-    ?>
+            ?>
     <div class="title_row">
         <h3><?php $this->_('Vultr.tab_stats.app_information'); ?></h3>
     </div>
