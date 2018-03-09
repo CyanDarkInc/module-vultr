@@ -1821,11 +1821,17 @@ class Vultr extends Module
             $server_details = (array) $this->parseResponse($vultr_api->listBaremetal($params));
         }
 
+        // Get application details
+        if (trim($server_details['os']) == 'Application') {
+            $application_details = $this->parseResponse($vultr_api->getAppInfo($params));
+        }
+
         $this->view->set('module_row', $row);
         $this->view->set('package', $package);
         $this->view->set('service', $service);
         $this->view->set('service_fields', $service_fields);
         $this->view->set('server_details', (isset($server_details) ? $server_details : []));
+        $this->view->set('application_details', (isset($application_details) ? $application_details : new stdClass()));
         $this->view->set('vars', (isset($vars) ? $vars : new stdClass()));
 
         $this->view->setDefaultView('components' . DS . 'modules' . DS . 'vultr' . DS);
@@ -2182,11 +2188,17 @@ class Vultr extends Module
             $server_details = (array) $this->parseResponse($vultr_api->listBaremetal($params));
         }
 
+        // Get application details
+        if (trim($server_details['os']) == 'Application') {
+            $application_details = $this->parseResponse($vultr_api->getAppInfo($params));
+        }
+
         $this->view->set('module_row', $row);
         $this->view->set('package', $package);
         $this->view->set('service', $service);
         $this->view->set('service_fields', $service_fields);
         $this->view->set('server_details', (isset($server_details) ? $server_details : []));
+        $this->view->set('application_details', (isset($application_details) ? $application_details : new stdClass()));
         $this->view->set('vars', (isset($vars) ? $vars : new stdClass()));
 
         $this->view->setDefaultView('components' . DS . 'modules' . DS . 'vultr' . DS);

@@ -25,3 +25,13 @@
             </tbody>
         </table>
     </div>
+
+    <?php
+        if (isset($application_details->app_info)) {
+    ?>
+    <hr>
+    <h4><?php $this->_('Vultr.tab_client_stats.app_information'); ?></h4>
+    <pre><?php $this->Html->_($application_details->app_info); ?></pre>
+    <?php
+        }
+    ?>

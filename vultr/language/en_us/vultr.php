@@ -88,6 +88,7 @@ $lang['Vultr.tab_stats.info.current_bandwidth_gb'] = 'Current Bandwidth (in GB)'
 $lang['Vultr.tab_stats.info.allowed_bandwidth_gb'] = 'Allowed Bandwidth (in GB)';
 $lang['Vultr.tab_stats.info.netmask_v4'] = 'IPv4 Netmask';
 $lang['Vultr.tab_stats.info.gateway_v4'] = 'IPv4 Gateway';
+$lang['Vultr.tab_stats.app_information'] = 'Application Information';
 
 $lang['Vultr.tab_snapshots.snapshots'] = 'Snapshots';
 $lang['Vultr.tab_snapshots.heading_row_snapshot_id'] = 'Snapshot ID';
@@ -142,6 +143,8 @@ $lang['Vultr.tab_client_stats.info.current_bandwidth_gb'] = 'Current Bandwidth (
 $lang['Vultr.tab_client_stats.info.allowed_bandwidth_gb'] = 'Allowed Bandwidth (in GB)';
 $lang['Vultr.tab_client_stats.info.netmask_v4'] = 'IPv4 Netmask';
 $lang['Vultr.tab_client_stats.info.gateway_v4'] = 'IPv4 Gateway';
+
+$lang['Vultr.tab_client_stats.app_information'] = 'Application Information';
 
 // Client snapshots
 $lang['Vultr.tab_client_snapshots.snapshots'] = 'Snapshots';
