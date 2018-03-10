@@ -445,6 +445,50 @@ class Vultr extends Module
     }
 
     /**
+     * Parse the application information by replacing and removing Vultr
+     * apparitions, to return it as a white label information.
+     * 
+     * @param mixed $api The vultr api instance
+     * @param stdClass $service A stdClass object representing the current service
+     * @return stdClass An object containing the application details
+     */
+    private function getApplicationDetails($api, $service)
+    {
+        // Get the service fields
+        $service_fields = $this->serviceFieldsToObject($service->fields);
+
+        $params = [
+            'SUBID' => $service_fields->vultr_subid
+        ];
+        $this->log('api.vultr.com|get_app_info', serialize($params), 'input', true);
+        $application_details = $this->parseResponse($api->getAppInfo($params));
+
+        if (isset($application_details->app_info)) {
+            Loader::loadModels($this, ['Companies']);
+
+            $company_id = Configure::get('Blesta.company_id');
+            $company = $this->Companies->get($company_id);
+
+            if ($company) {
+                $string = $application_details->app_info;
+
+                $string = str_replace('Vultr', $company->name, $string);
+                $string = str_replace('www.vultr.com', $company->hostname, $string);
+                $string = str_replace('vultr.com', $company->hostname, $string);
+
+                $footer_pos = strpos($string, 'Read more');
+                $string = substr($string, 0, $footer_pos);
+
+                if (!empty($string)) {
+                    $application_details->app_info = trim($string);
+                }
+            }
+        }
+
+        return $application_details;
+    }
+
+    /**
      * Returns an array of key values for fields stored for a module, package,
      * and service under this module, used to substitute those keys with their
      * actual module, package, or service meta values in related emails.
@@ -1823,15 +1867,15 @@ class Vultr extends Module
 
         // Get application details
         if (trim($server_details['os']) == 'Application') {
-            $application_details = $this->parseResponse($vultr_api->getAppInfo($params));
+            $application_details = $this->getApplicationDetails($vultr_api, $service);
         }
 
         $this->view->set('module_row', $row);
         $this->view->set('package', $package);
         $this->view->set('service', $service);
         $this->view->set('service_fields', $service_fields);
-        $this->view->set('server_details', (isset($server_details) ? $server_details : []));
-        $this->view->set('application_details', (isset($application_details) ? $application_details : new stdClass()));
+        $this->view->set('server_details', $server_details);
+        $this->view->set('application_details', $application_details);
         $this->view->set('vars', (isset($vars) ? $vars : new stdClass()));
 
         $this->view->setDefaultView('components' . DS . 'modules' . DS . 'vultr' . DS);
@@ -2190,15 +2234,15 @@ class Vultr extends Module
 
         // Get application details
         if (trim($server_details['os']) == 'Application') {
-            $application_details = $this->parseResponse($vultr_api->getAppInfo($params));
+            $application_details = $this->getApplicationDetails($vultr_api, $service);
         }
 
         $this->view->set('module_row', $row);
         $this->view->set('package', $package);
         $this->view->set('service', $service);
         $this->view->set('service_fields', $service_fields);
-        $this->view->set('server_details', (isset($server_details) ? $server_details : []));
-        $this->view->set('application_details', (isset($application_details) ? $application_details : new stdClass()));
+        $this->view->set('server_details', $server_details);
+        $this->view->set('application_details', $application_details);
         $this->view->set('vars', (isset($vars) ? $vars : new stdClass()));
 
         $this->view->setDefaultView('components' . DS . 'modules' . DS . 'vultr' . DS);
