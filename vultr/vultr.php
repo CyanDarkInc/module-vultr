@@ -447,7 +447,7 @@ class Vultr extends Module
     /**
      * Parse the application information by replacing and removing Vultr
      * apparitions, to return it as a white label information.
-     * 
+     *
      * @param mixed $api The vultr api instance
      * @param stdClass $service A stdClass object representing the current service
      * @return stdClass An object containing the application details
