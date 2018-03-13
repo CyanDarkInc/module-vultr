@@ -113,7 +113,7 @@
             </div>
 
             <button class="btn btn-default pull-right">
-                <i class="fa fa-plus"></i> <?php $this->_('Vultr.tab_client_snapshots.field_create_submit');?>
+                <i class="fa fa-plus"></i> <?php $this->_('Vultr.tab_client_snapshots.field_create_submit'); ?>
             </button>
         </div>
         <?php

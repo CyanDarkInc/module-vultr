@@ -17,7 +17,7 @@
                     <td><?php $this->Html->_($server_details->os); ?></td>
                     <td><?php $this->Html->_($server_details->location); ?></td>
                     <td><?php $this->Html->_($server_details->main_ip); ?></td>
-                    <td><?php $this->Html->_($server_details->default_password);?></td>
+                    <td><?php $this->Html->_($server_details->default_password); ?></td>
                 </tr>
             </tbody>
         </table>
